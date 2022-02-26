@@ -2,7 +2,7 @@ package com.example.cloudcomputing
 
 import android.app.Application
 
-class AndroidGettingStartedApplication : Application() {
+class CloudComputingApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
