@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.amplifyframework.datastore.generated.model.NoteData
+import com.amplifyframework.api.graphql.model.ModelMutation
+import com.amplifyframework.api.graphql.model.ModelQuery
 
 // a singleton to hold user data (this is a ViewModel pattern, without inheriting from ViewModel)
 object UserData {
