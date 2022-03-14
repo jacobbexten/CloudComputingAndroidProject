@@ -1,6 +1,18 @@
 {
     "UserAgent": "aws-amplify-cli/2.0",
     "Version": "1.0",
+    "api": {
+        "plugins": {
+            "awsAPIPlugin": {
+                "cloudcomputingapp": {
+                    "endpointType": "GraphQL",
+                    "endpoint": "https://ywlsssw3lndoznkoqxsxua7r7q.appsync-api.us-west-2.amazonaws.com/graphql",
+                    "region": "us-west-2",
+                    "authorizationType": "AMAZON_COGNITO_USER_POOLS"
+                }
+            }
+        }
+    },
     "auth": {
         "plugins": {
             "awsCognitoAuthPlugin": {
@@ -56,6 +68,14 @@
                         "verificationMechanisms": [
                             "EMAIL"
                         ]
+                    }
+                },
+                "AppSync": {
+                    "Default": {
+                        "ApiUrl": "https://ywlsssw3lndoznkoqxsxua7r7q.appsync-api.us-west-2.amazonaws.com/graphql",
+                        "Region": "us-west-2",
+                        "AuthMode": "AMAZON_COGNITO_USER_POOLS",
+                        "ClientDatabasePrefix": "cloudcomputingapp_AMAZON_COGNITO_USER_POOLS"
                     }
                 }
             }

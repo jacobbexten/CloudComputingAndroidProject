@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "cloudcomputingapp",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/logan-home/AndroidStudioProjects/CloudComputingProject/amplify/backend/api/cloudcomputingapp/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authcloudcomputingapp3610a7d2"
+    }
+  }
+}

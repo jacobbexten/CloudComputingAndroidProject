@@ -52,5 +52,13 @@
                 "EMAIL"
             ]
         }
+    },
+    "AppSync": {
+        "Default": {
+            "ApiUrl": "https://ywlsssw3lndoznkoqxsxua7r7q.appsync-api.us-west-2.amazonaws.com/graphql",
+            "Region": "us-west-2",
+            "AuthMode": "AMAZON_COGNITO_USER_POOLS",
+            "ClientDatabasePrefix": "cloudcomputingapp_AMAZON_COGNITO_USER_POOLS"
+        }
     }
 }
