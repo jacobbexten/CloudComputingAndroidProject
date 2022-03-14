@@ -15,6 +15,7 @@ import com.amplifyframework.auth.result.AuthSessionResult
 import android.app.Activity
 import com.amplifyframework.auth.AuthException
 import android.content.Intent
+import com.amplifyframework.api.aws.AWSApiPlugin
 
 object Backend {
 
@@ -23,6 +24,7 @@ object Backend {
     fun initialize(applicationContext: Context) : Backend {
         try {
             Amplify.addPlugin(AWSCognitoAuthPlugin())
+            Amplify.addPlugin(AWSApiPlugin())
             Amplify.configure(applicationContext)
 
             Log.i(TAG, "Initialized Amplify")
