@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-// this is a single cell (row) in the list of Notes
 class NoteRecyclerViewAdapter(
     private val values: MutableList<UserData.Note>?) :
     RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
