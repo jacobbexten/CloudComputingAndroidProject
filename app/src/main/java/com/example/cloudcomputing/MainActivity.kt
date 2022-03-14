@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin
+import com.amplifyframework.core.Amplify
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity() {
                 fabAuth.setImageResource(R.drawable.ic_baseline_lock)
             }
         })
+
+        Amplify.Auth.signInWithWebUI(this,
+            { Log.i("AuthQuickStart", "Signin OK = $it") },
+            { Log.e("AuthQuickStart", "Signin failed", it) }
+        )
     }
 
     // recycler view is the list of cells
@@ -61,6 +67,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == AWSCognitoAuthPlugin.WEB_UI_SIGN_IN_ACTIVITY_CODE) {
+            Amplify.Auth.handleWebUISignInResponse(data)
+        }
         Backend.handleWebUISignInResponse(requestCode, resultCode, data)
     }
 
