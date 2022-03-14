@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin
 import com.amplifyframework.core.Amplify
+import com.example.cloudcomputing.AddNoteActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -23,13 +24,21 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView(item_list)
         setupAuthButton(UserData)
 
-        UserData.isSignedIn.observe(this, Observer<Boolean> { isSignedUp->
+        UserData.isSignedIn.observe(this, Observer<Boolean> { isSignedUp ->
+            // update UI
             Log.i(TAG, "isSignedIn changed : $isSignedUp")
 
+            //animation inspired by https://www.11zon.com/zon/android/multiple-floating-action-button-android.php
             if (isSignedUp) {
                 fabAuth.setImageResource(R.drawable.ic_baseline_lock_open)
+                Log.d(TAG, "Showing fabADD")
+                fabAdd.show()
+                fabAdd.animate().translationY(0.0F - 1.1F * fabAuth.customSize)
             } else {
                 fabAuth.setImageResource(R.drawable.ic_baseline_lock)
+                Log.d(TAG, "Hiding fabADD")
+                fabAdd.hide()
+                fabAdd.animate().translationY(0.0F)
             }
         })
 
@@ -37,6 +46,9 @@ class MainActivity : AppCompatActivity() {
             { Log.i("AuthQuickStart", "Signin OK = $it") },
             { Log.e("AuthQuickStart", "Signin failed", it) }
         )
+        fabAdd.setOnClickListener {
+            startActivity(Intent(this, AddNoteActivity::class.java))
+        }
     }
 
     // recycler view is the list of cells
@@ -76,4 +88,5 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "MainActivity"
     }
+
 }

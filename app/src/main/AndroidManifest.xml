@@ -34,6 +34,14 @@
                 <data android:scheme="cloudcomputing"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddNoteActivity"
+            android:label="Add Note"
+            android:theme="@style/Theme.CloudComputing.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.cloudcomputing.MainActivity" />
+        </activity>
     </application>
 
 
