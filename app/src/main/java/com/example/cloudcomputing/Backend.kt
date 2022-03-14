@@ -100,7 +100,7 @@ object Backend {
     }
 
     fun handleWebUISignInResponse(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.d(TAG, "recieved requestCode : $requestCode and resultCode : $resultCode")
+        Log.d(TAG, "received requestCode : $requestCode and resultCode : $resultCode")
         if (requestCode == AWSCognitoAuthPlugin.WEB_UI_SIGN_IN_ACTIVITY_CODE) {
             Amplify.Auth.handleWebUISignInResponse(data)
         }

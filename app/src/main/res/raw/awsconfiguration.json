@@ -7,20 +7,33 @@
     "CredentialsProvider": {
         "CognitoIdentity": {
             "Default": {
-                "PoolId": "us-west-2:fb821234-589b-4eba-ae69-0dfc2a3d2efa",
+                "PoolId": "us-west-2:1f769eeb-1120-40b4-9ac8-19d1fc77ae24",
                 "Region": "us-west-2"
             }
         }
     },
     "CognitoUserPool": {
         "Default": {
-            "PoolId": "us-west-2_P6UEupLKo",
-            "AppClientId": "5qd5hk0lsh4mtm6att7rtlfsb",
+            "PoolId": "us-west-2_sPj03fvtB",
+            "AppClientId": "3hubj1jpgramvt1ep1qmf7fdmr",
             "Region": "us-west-2"
         }
     },
     "Auth": {
         "Default": {
+            "OAuth": {
+                "WebDomain": "cloudcomputingapp3610a7d2-3610a7d2-dev.auth.us-west-2.amazoncognito.com",
+                "AppClientId": "3hubj1jpgramvt1ep1qmf7fdmr",
+                "SignInRedirectURI": "cloudcomputing://",
+                "SignOutRedirectURI": "cloudcomputing://",
+                "Scopes": [
+                    "phone",
+                    "email",
+                    "openid",
+                    "profile",
+                    "aws.cognito.signin.user.admin"
+                ]
+            },
             "authenticationFlowType": "USER_SRP_AUTH",
             "socialProviders": [],
             "usernameAttributes": [],
