@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Showing fabADD")
                 fabAdd.show()
                 fabAdd.animate().translationY(0.0F - 1.1F * fabAuth.customSize)
+
             } else {
                 fabAuth.setImageResource(R.drawable.ic_baseline_lock)
                 Log.d(TAG, "Hiding fabADD")
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 authButton.setImageResource(R.drawable.ic_baseline_lock_open)
                 Backend.signOut()
             } else {
-                authButton.setImageResource(R.drawable.ic_baseline_lock_open)
+                authButton.setImageResource(R.drawable.ic_baseline_lock)
                 Backend.signIn(this)
             }
         }

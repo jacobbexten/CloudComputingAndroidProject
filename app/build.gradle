@@ -55,7 +55,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // Amplify core dependency
-    implementation 'com.amplifyframework:core:1.4.0'
-    implementation 'com.amplifyframework:aws-api:1.4.0'
+    implementation 'com.amplifyframework:core:1.24.0'
+    implementation 'com.amplifyframework:aws-api:1.24.0'
     implementation 'com.amplifyframework:aws-auth-cognito:1.24.0'
 }
