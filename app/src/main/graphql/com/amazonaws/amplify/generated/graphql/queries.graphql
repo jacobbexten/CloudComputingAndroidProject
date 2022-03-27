@@ -1,0 +1,65 @@
+# this is an auto generated file. This will be overwritten
+query GetNoteData($id: ID!) {
+  getNoteData(id: $id) {
+    id
+    name
+    description
+    image
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListNoteData(
+  $filter: ModelNoteDataFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listNoteData(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncNoteData(
+  $filter: ModelNoteDataFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncNoteData(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      description
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin
 import com.amplifyframework.core.Amplify
@@ -62,6 +63,9 @@ class MainActivity : AppCompatActivity() {
             // let's create a RecyclerViewAdapter that manages the individual cells
             recyclerView.adapter = NoteRecyclerViewAdapter(notes)
         })
+        // add a touch gesture handler to manager the swipe to delete gesture
+        val itemTouchHelper = ItemTouchHelper(SwipeCallback(this))
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     private fun setupAuthButton(userData: UserData) {

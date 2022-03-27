@@ -60,5 +60,11 @@
             "AuthMode": "AMAZON_COGNITO_USER_POOLS",
             "ClientDatabasePrefix": "cloudcomputingapp_AMAZON_COGNITO_USER_POOLS"
         }
+    },
+    "S3TransferUtility": {
+        "Default": {
+            "Bucket": "cloudcomputingappd856797fc49f4b9c9d710747db1ef7124721-dev",
+            "Region": "us-west-2"
+        }
     }
 }

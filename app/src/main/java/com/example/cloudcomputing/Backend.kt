@@ -19,7 +19,7 @@ import com.amplifyframework.api.aws.AWSApiPlugin
 import com.amplifyframework.api.graphql.model.ModelMutation
 import com.amplifyframework.api.graphql.model.ModelQuery
 
-import com.amplifyframework.datastore.generated.model.NoteData
+import com.amplifyframework.datastore.generated.model.NoteData as NoteData
 
 
 
@@ -124,20 +124,21 @@ object Backend {
         }
     }
 
-    fun queryNotes() {
+    private fun queryNotes() {
         Log.i(TAG, "Querying notes")
 
         Amplify.API.query(
             ModelQuery.list(NoteData::class.java),
             { response ->
+                if (response.hasData()) {
                 Log.i(TAG, "Queried")
-                if(response.data != null) {
-                    for (noteData in response.data) {
+                    response.data.items.forEach() { noteData ->
                         Log.i(TAG, noteData.name)
                         // TODO should add all the notes at once instead of one by one (each add triggers a UI refresh)
                         UserData.addNote(UserData.Note.from(noteData))
                     }
                 }
+
             },
             { error -> Log.e(TAG, "Query failure", error) }
         )
