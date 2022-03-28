@@ -79,10 +79,19 @@ object UserData {
         companion object {
             fun from(noteData : NoteData) : Note {
                 val result = Note(noteData.id, noteData.name, noteData.description, noteData.image)
-                // some additional code will come here later
+
+                if (noteData.image != null) {
+                    Backend.retrieveImage(noteData.image!!) {
+                        result.image = it
+
+                        // force a UI update
+                        with(UserData) { notifyObserver() }
+                    }
+                }
                 return result
             }
         }
+
 
     }
 }
