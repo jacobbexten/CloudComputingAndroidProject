@@ -16,7 +16,6 @@ public final class AmplifyModelProvider implements ModelProvider {
   private static final String AMPLIFY_MODEL_VERSION = "a7106e5817ec405650b38ad2a831669a";
   private static AmplifyModelProvider amplifyGeneratedModelInstance;
   private AmplifyModelProvider() {
-    
   }
   
   public static AmplifyModelProvider getInstance() {
