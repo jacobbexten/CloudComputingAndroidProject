@@ -3,20 +3,18 @@ package com.example.cloudcomputing
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin
 import com.amplifyframework.core.Amplify
-import com.example.cloudcomputing.AddNoteActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import java.text.FieldPosition
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(), NoteRecyclerViewAdapter.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -54,6 +52,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onItemClick(position: Int) {
+        Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
+    }
+
     // recycler view is the list of cells
     private fun setupRecyclerView(recyclerView: RecyclerView) {
 
@@ -62,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "Note observer received ${notes.size} notes")
 
             // let's create a RecyclerViewAdapter that manages the individual cells
-            recyclerView.adapter = NoteRecyclerViewAdapter(notes)
+            recyclerView.adapter = NoteRecyclerViewAdapter(notes, this)
         })
         // add a touch gesture handler to manager the swipe to delete gesture
         val itemTouchHelper = ItemTouchHelper(SwipeCallback(this))

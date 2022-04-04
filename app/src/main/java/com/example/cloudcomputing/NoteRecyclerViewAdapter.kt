@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteRecyclerViewAdapter(
-    private val listener: (UserData.Note) -> Unit,
-    private val values: MutableList<UserData.Note>?) :
+    private val values: MutableList<UserData.Note>?,
+    private val listener: OnItemClickListener ):
     RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,19 +28,28 @@ class NoteRecyclerViewAdapter(
             holder.imageView.setImageBitmap(item.image)
         }
 
-        holder.itemView.setOnClickListener {
-            if (item != null) {
-                listener(item)
-            }
-        }
-
     }
 
     override fun getItemCount() = values?.size ?: 0
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val imageView: ImageView = view.findViewById(R.id.image)
         val nameView: TextView = view.findViewById(R.id.name)
         val descriptionView: TextView = view.findViewById(R.id.description)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }
