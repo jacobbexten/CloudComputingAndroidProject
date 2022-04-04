@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteRecyclerViewAdapter(
+    private val listener: (UserData.Note) -> Unit,
     private val values: MutableList<UserData.Note>?) :
     RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
 
@@ -26,6 +27,13 @@ class NoteRecyclerViewAdapter(
         if (item?.image != null) {
             holder.imageView.setImageBitmap(item.image)
         }
+
+        holder.itemView.setOnClickListener {
+            if (item != null) {
+                listener(item)
+            }
+        }
+
     }
 
     override fun getItemCount() = values?.size ?: 0

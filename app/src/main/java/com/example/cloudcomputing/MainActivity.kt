@@ -13,6 +13,7 @@ import com.example.cloudcomputing.AddNoteActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.text.FieldPosition
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,7 +67,9 @@ class MainActivity : AppCompatActivity() {
         // add a touch gesture handler to manager the swipe to delete gesture
         val itemTouchHelper = ItemTouchHelper(SwipeCallback(this))
         itemTouchHelper.attachToRecyclerView(recyclerView)
+
     }
+
 
     private fun setupAuthButton(userData: UserData) {
         fabAuth.setOnClickListener { view ->
@@ -81,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
