@@ -21,7 +21,7 @@ class EditNoteActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_note)
+        setContentView(R.layout.activity_edit_note)
 
         cancel2.setOnClickListener {
             this.finish()
@@ -70,7 +70,7 @@ class EditNoteActivity : AppCompatActivity()  {
     }
 
     companion object {
-        private const val TAG = "AddNoteActivity"
+        private const val TAG = "EditNoteActivity"
         // add this to the companion object
         private const val SELECT_PHOTO = 100
     }
