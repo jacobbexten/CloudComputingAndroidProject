@@ -15,9 +15,11 @@ import kotlinx.android.synthetic.main.activity_edit_note.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
+import androidx.recyclerview.widget.RecyclerView
+import com.amplifyframework.datastore.generated.model.NoteData
 import java.util.*
 
-class EditNoteActivity : AppCompatActivity()  {
+class EditNoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,6 @@ class EditNoteActivity : AppCompatActivity()  {
         cancel2.setOnClickListener {
             this.finish()
         }
-
         addNote2.setOnClickListener {
 
             // create a note object
@@ -49,7 +50,7 @@ class EditNoteActivity : AppCompatActivity()  {
             Backend.updateNote(note)
 
             // add it to UserData, this will trigger a UI refresh
-            UserData.addNote(note)
+            UserData.editNote()
 
             // close activity
             this.finish()

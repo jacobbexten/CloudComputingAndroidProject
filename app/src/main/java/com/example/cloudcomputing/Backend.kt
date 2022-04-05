@@ -177,7 +177,7 @@ object Backend {
         Amplify.API.mutate(
             ModelMutation.update(note.data),
             { response ->
-                Log.i(TAG, "Created")
+                Log.i(TAG, "Updated")
                 if (response.hasErrors()) {
                     Log.e(TAG, response.errors.first().message)
                 } else {
