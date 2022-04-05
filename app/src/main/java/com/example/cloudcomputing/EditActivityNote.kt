@@ -21,7 +21,7 @@ class EditNoteActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_note)
+        setContentView(R.layout.activity_edit_note)
 
         cancel2.setOnClickListener {
             this.finish()
@@ -46,7 +46,7 @@ class EditNoteActivity : AppCompatActivity()  {
             }
 
             // store it in the backend
-            Backend.createNote(note)
+            Backend.updateNote(note)
 
             // add it to UserData, this will trigger a UI refresh
             UserData.addNote(note)

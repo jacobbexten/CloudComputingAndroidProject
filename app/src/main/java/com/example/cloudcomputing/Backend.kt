@@ -171,6 +171,23 @@ object Backend {
         )
     }
 
+    fun updateNote(note : UserData.Note) {
+        Log.i(TAG, "Updating note")
+
+        Amplify.API.mutate(
+            ModelMutation.update(note.data),
+            { response ->
+                Log.i(TAG, "Created")
+                if (response.hasErrors()) {
+                    Log.e(TAG, response.errors.first().message)
+                } else {
+                    Log.i(TAG, "Updated Note with id: " + response.data.id)
+                }
+            },
+            { error -> Log.e(TAG, "Update failed", error) }
+        )
+    }
+
     fun deleteNote(note : UserData.Note?) {
 
         if (note == null) return

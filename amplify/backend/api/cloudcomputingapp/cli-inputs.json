@@ -7,6 +7,8 @@
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
       "cognitoUserPoolId": "authcloudcomputingapp3610a7d2"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }
