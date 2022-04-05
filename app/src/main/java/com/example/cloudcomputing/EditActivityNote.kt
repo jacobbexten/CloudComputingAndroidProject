@@ -93,7 +93,7 @@ class EditNoteActivity : AppCompatActivity() {
                 // read the stream to fill in the preview
                 var imageStream: InputStream? = contentResolver.openInputStream(selectedImageUri!!)
                 val selectedImage = BitmapFactory.decodeStream(imageStream)
-                val ivPreview: ImageView = findViewById<View>(R.id.image) as ImageView
+                val ivPreview: ImageView = findViewById<View>(R.id.image2) as ImageView
                 ivPreview.setImageBitmap(selectedImage)
 
                 // store the image to not recreate the Bitmap every time
