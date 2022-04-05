@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amplifyframework.api.graphql.model.ModelQuery
 import com.amplifyframework.core.Amplify
 import com.amplifyframework.datastore.generated.model.NoteData
+import kotlinx.android.synthetic.main.activity_add_note.*
 import java.util.*
 
 class EditNoteActivity : AppCompatActivity() {
@@ -31,9 +32,15 @@ class EditNoteActivity : AppCompatActivity() {
             this.finish()
         }
         addNote2.setOnClickListener {
-            val note = UserData.editNote(getIntent().getExtras()?.getInt("pos") ?: -999999999)
+            val data = UserData.editNote(getIntent().getExtras()?.getInt("pos") ?: -999999999)
 
-            if (this.noteImagePath != null && note != null) {
+            val note = UserData.Note(
+                data?.id ?: UUID.randomUUID().toString(),
+                name2?.text.toString(),
+                description2?.text.toString()
+            )
+
+            if (this.noteImagePath != null) {
                 note.imageName = UUID.randomUUID().toString()
                 //note.setImage(this.noteImage)
                 note.image = this.noteImage
@@ -43,12 +50,8 @@ class EditNoteActivity : AppCompatActivity() {
             }
 
             // store it in the backend
-            if (note != null) {
-                Backend.updateNote(note)
-            }
-            if (note != null) {
-                UserData.addNote(note)
-            }
+            Backend.updateNote(note)
+            UserData.addNote(note)
 
 
             // close activity
