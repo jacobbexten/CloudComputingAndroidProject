@@ -1,6 +1,8 @@
 type NoteData
 @model
-@auth (rules: [ { allow: owner, operations: [create, delete, update] } ]) {
+@auth(rules: [{allow: owner, operations: [read, create, update, delete], provider: userPools}])
+@aws_cognito_user_pools
+{
     id: ID!
     name: String!
     description: String

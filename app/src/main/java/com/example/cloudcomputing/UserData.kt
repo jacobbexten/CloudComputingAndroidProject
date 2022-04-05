@@ -47,13 +47,10 @@ object UserData {
             Log.e(TAG, "addNote : note collection is null !!")
         }
     }
-    fun editNote() {
-        val notes = _notes.value
-        if (notes != null) {
-            _notes.notifyObserver()
-        } else {
-            Log.e(TAG, "addNote : note collection is null !!")
-        }
+    fun editNote(at: Int) : Note? {
+        val note = _notes.value?.removeAt(at)
+        _notes.notifyObserver()
+        return note
     }
     fun deleteNote(at: Int) : Note?  {
         val note = _notes.value?.removeAt(at)
