@@ -70,7 +70,7 @@ class EditNoteActivity : AppCompatActivity()  {
     }
 
     companion object {
-        private const val TAG = "AddNoteActivity"
+        private const val TAG = "EditNoteActivity"
         // add this to the companion object
         private const val SELECT_PHOTO = 100
     }

@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), NoteRecyclerViewAdapter.OnItemClickLis
 
     override fun onItemClick(position: Int) {
         Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, EditNoteActivity::class.java))
     }
 
     // recycler view is the list of cells
